@@ -3,8 +3,8 @@ import { User } from '../interfaces/User';
 
 interface Props {
     users: User[]
-    editRow?
-    deleteUser?
+    editRow?: any
+    deleteUser?: any
 }
 
 const UserTable = ({ users, editRow, deleteUser }:Props): JSX.Element => (
