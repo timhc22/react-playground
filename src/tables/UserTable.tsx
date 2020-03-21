@@ -29,6 +29,6 @@ const UserTable = props => (
 
       </tbody>
     </table>
-)
+);
 
 export default UserTable

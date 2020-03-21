@@ -8,32 +8,32 @@ const App = () => {
     { id: 1, name: 'Tania', username: 'floppydiskette' },
     { id: 2, name: 'Craig', username: 'siliconeidolon' },
     { id: 3, name: 'Ben', username: 'benisphere' },
-  ]
+  ];
 
   const [users, setUsers] = useState(usersData);
   const [editing, setEditing] = useState(false);
-  const initialFormState = { id: null, name: '', username: '' }
-  const [currentUser, setCurrentUser] = useState(initialFormState)
+  const initialFormState = { id: null, name: '', username: '' };
+  const [currentUser, setCurrentUser] = useState(initialFormState);
 
   const addUser = user => {
-    user.id = users.length + 1
+    user.id = users.length + 1;
     setUsers([...users, user])
-  }
+  };
 
   const deleteUser = id => {
-    setEditing(false)
+    setEditing(false);
     setUsers(users.filter(user => user.id !== id))
-  }
+  };
 
   const editRow = user => {
-    setEditing(true)
+    setEditing(true);
     setCurrentUser({ id: user.id, name: user.name, username: user.username })
-  }
+  };
 
   const updateUser = (id, updatedUser) => {
-    setEditing(false)
+    setEditing(false);
     setUsers(users.map(user => (user.id === id ? updatedUser : user)))
-  }
+  };
 
   return (
       <div className="container">
@@ -65,6 +65,6 @@ const App = () => {
         </div>
       </div>
   );
-}
+};
 
 export default App;
