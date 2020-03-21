@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import {User} from "../interfaces/User";
+import { User } from "../interfaces/User";
 
 const EditUserForm = (props: any): JSX.Element => {
   const [user, setUser] = useState<User>(props.currentUser);
