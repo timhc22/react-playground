@@ -1,10 +1,5 @@
-import React from 'react'
-
-interface User {
-    id,
-    name,
-    username
-}
+import React from 'react';
+import { User } from '../interfaces/User';
 
 interface Props {
     users: User[]

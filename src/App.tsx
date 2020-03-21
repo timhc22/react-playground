@@ -2,35 +2,37 @@ import React, {useState} from 'react';
 import UserTable from "./tables/UserTable"
 import AddUserForm from './forms/AddUserForm'
 import EditUserForm from './forms/EditUserForm'
+import { User } from "./interfaces/User";
 
-const App = () => {
-  const usersData = [
-    { id: 1, name: 'Tania', username: 'floppydiskette' },
-    { id: 2, name: 'Craig', username: 'siliconeidolon' },
-    { id: 3, name: 'Ben', username: 'benisphere' },
-  ];
+const usersData: User[] = [
+  { id: 1, name: 'Tania', username: 'floppydiskette' },
+  { id: 2, name: 'Craig', username: 'siliconeidolon' },
+  { id: 3, name: 'Ben', username: 'benisphere' },
+];
 
-  const [users, setUsers] = useState(usersData);
-  const [editing, setEditing] = useState(false);
-  const initialFormState = { id: null, name: '', username: '' };
-  const [currentUser, setCurrentUser] = useState(initialFormState);
+const initialFormState: User = { id: null, name: '', username: '' };
 
-  const addUser = user => {
+const App = (): JSX.Element => {
+  const [users, setUsers] = useState<User[]>(usersData);
+  const [editing, setEditing] = useState<boolean>(false);
+  const [currentUser, setCurrentUser] = useState<User>(initialFormState);
+
+  const addUser = (user: User): void => {
     user.id = users.length + 1;
     setUsers([...users, user]);
   };
 
-  const deleteUser = id => {
+  const deleteUser = (id: number): void => {
     setEditing(false);
     setUsers(users.filter(user => user.id !== id));
   };
 
-  const editRow = user => {
+  const editRow = (user: User): void => {
     setEditing(true);
     setCurrentUser({ id: user.id, name: user.name, username: user.username });
   };
 
-  const updateUser = (id, updatedUser) => {
+  const updateUser = (id: number, updatedUser: User): void => {
     setEditing(false);
     setUsers(users.map(user => (user.id === id ? updatedUser : user)));
   };
