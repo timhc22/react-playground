@@ -5,11 +5,11 @@ const EditUserForm = props => {
 
   const handleInputChange = event => {
     const { name, value } = event.target;
-    setUser({ ...user, [name]: value })
+    setUser({ ...user, [name]: value });
   };
 
   useEffect(() => {
-    setUser(props.currentUser)
+    setUser(props.currentUser);
   }, [props]);
 
   return (

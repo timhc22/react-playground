@@ -7,7 +7,7 @@ const AddUserForm = props => {
   const handleInputChange = event => {
     const { name, value } = event.target;
 
-    setUser({ ...user, [name]: value })
+    setUser({ ...user, [name]: value });
   };
 
   return (
@@ -16,7 +16,7 @@ const AddUserForm = props => {
         if (!user.name || !user.username) return;
 
         props.addUser(user);
-        setUser(initialFormState)
+        setUser(initialFormState);
       }}>
         <label>Name</label>
         <input type="text" name="name" value={user.name} onChange={handleInputChange} />
