@@ -1,7 +1,7 @@
-import React, {useState} from 'react';
-import UserTable from "./tables/UserTable"
-import AddUserForm from './forms/AddUserForm'
-import EditUserForm from './forms/EditUserForm'
+import React, { useState } from 'react';
+import UserTable from "./tables/UserTable";
+import AddUserForm from './forms/AddUserForm';
+import EditUserForm from './forms/EditUserForm';
 import { User } from "./interfaces/User";
 
 const usersData: User[] = [
@@ -44,19 +44,19 @@ const App = (): JSX.Element => {
 
           <div className="flex-large">
             {editing ? (
-              <div>
-                <h2>Edit user</h2>
-                <EditUserForm
-                  editing={editing}
-                  setEditing={setEditing}
-                  currentUser={currentUser}
-                  updateUser={updateUser} />
-              </div>
+                <div>
+                  <h2>Edit user</h2>
+                  <EditUserForm
+                      editing={editing}
+                      setEditing={setEditing}
+                      currentUser={currentUser}
+                      updateUser={updateUser} />
+                </div>
             ) : (
-              <div>
-                <h2>Add user</h2>
-                <AddUserForm addUser={addUser} />
-              </div>
+                <div>
+                  <h2>Add user</h2>
+                  <AddUserForm addUser={addUser} />
+                </div>
             )}
           </div>
 

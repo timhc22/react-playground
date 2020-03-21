@@ -1,12 +1,12 @@
-import React, { useState } from 'react'
+import React, { useState } from 'react';
+import { User } from "../interfaces/User";
 
-const AddUserForm = props => {
+const AddUserForm = (props: any): JSX.Element => {
   const initialFormState = { id: null, name: '', username: '' };
-  const [user, setUser] = useState(initialFormState);
+  const [user, setUser] = useState<User>(initialFormState);
 
-  const handleInputChange = event => {
+  const handleInputChange = (event: any)  => {
     const { name, value } = event.target;
-
     setUser({ ...user, [name]: value });
   };
 
