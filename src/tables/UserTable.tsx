@@ -1,12 +1,18 @@
 import React from 'react'
 
+interface User {
+    id,
+    name,
+    username
+}
+
 interface Props {
-    users
+    users: User[]
     editRow?
     deleteUser?
 }
 
-const UserTable = ({ users, editRow, deleteUser }:Props) => (
+const UserTable = ({ users, editRow, deleteUser }:Props): JSX.Element => (
     <table>
       <thead>
       <tr>
