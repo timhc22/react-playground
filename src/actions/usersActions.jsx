@@ -18,7 +18,7 @@ export const getUsersFailure = () => ({
 });
 
 // combine into async thunk
-export function fetchUsers() {
+export const fetchUsers = () => {
   return async dispatch => {
     dispatch(getUsers())
 

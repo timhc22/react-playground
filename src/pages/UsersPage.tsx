@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { connect } from 'react-redux'; // enables redux state to be in props of component
+import { useSelector, useDispatch } from "react-redux"; // enables redux state to be in props of component
 // import UserTable from "../tables/UserTable";
 // import AddUserForm from '../forms/AddUserForm';
 // import EditUserForm from '../forms/EditUserForm';
@@ -15,7 +15,12 @@ import { User } from "../interfaces/User";
 //
 // const initialFormState: User = { id: null, name: '', username: '' };
 
-const UsersPage = ({dispatch, users, loading, hasErrors}: any): JSX.Element => {
+const UsersPage = (): JSX.Element => {
+    const loading = useSelector((state: any) => state.users.loading);
+    const users = useSelector((state: any) => state.users.users);
+    const hasErrors = useSelector((state: any) => state.users.hasErrors);
+    const dispatch = useDispatch();
+
     // todo check hooks integration with this (especially on users)
     useEffect(() => {
         dispatch(fetchUsers())
@@ -90,12 +95,5 @@ const UsersPage = ({dispatch, users, loading, hasErrors}: any): JSX.Element => {
     // )
 };
 
-// map redux state to react component props
-const mapStateToProps = (state: any) => ({
-    loading: state.users.loading,
-    users: state.users.users,
-    hasErrors: state.users.hasErrors,
-});
-
 // connect redux to react
-export default connect(mapStateToProps)(UsersPage);
+export default UsersPage;

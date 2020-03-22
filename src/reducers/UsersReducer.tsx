@@ -1,12 +1,12 @@
 import * as actions from '../actions/usersActions';
 
-export const initialState = {
+const initialState = {
     users: [],
     loading: false,
     hasErrors: false,
 };
 
-export default function usersReducer(state = initialState, action: any) {
+export default (state = initialState, action: any) => {
     switch (action.type) {
         case actions.GET_USERS:
             return { ...state, loading: true };
