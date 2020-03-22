@@ -24,7 +24,7 @@ const UsersPage = ({dispatch, users, loading, hasErrors}: any): JSX.Element => {
     const renderUsers = () => {
         if (loading) return <p>Loading Users...</p>;
         if (hasErrors) return <p>Unable to display users.</p>;
-        return users.map((user: User) => <UserComponent key={user.id} />)
+        return users.map((user: User) => <UserComponent key={user.id} user={user} />)
     };
 
     return (
