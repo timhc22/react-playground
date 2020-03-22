@@ -1,13 +1,13 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-const DashboardPage = () => (
+const DashboardPage = (): JSX.Element => (
     <section>
         <h1>Dashboard</h1>
         <p>This is the dashboard.</p>
 
-        <Link to="/posts" className="button">
-            View Posts
+        <Link to="/users" className="button">
+            View Users
         </Link>
     </section>
 );
