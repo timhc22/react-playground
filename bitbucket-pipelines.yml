@@ -1,12 +1,29 @@
-# This is a sample build configuration for all languages.
-# Check our guides at https://confluence.atlassian.com/x/5Q4SMw for more examples.
+# This is a sample build configuration for Javascript (Node.js).
+# Check our guides at https://confluence.atlassian.com/x/14UWN for more examples.
 # Only use spaces to indent your .yml configuration.
 # -----
 # You can specify a custom docker image from Docker Hub as your build environment.
-# image: docker-image:tag
+image: rhinogram/node-awscli
+options:
+  docker: true
 
 pipelines:
-  default:
-    - step:
-        script:
-          - echo "Everything is awesome!"
+  branches:
+    master:
+      - step:
+          name: Deploy to production
+          deployment: production
+          caches:
+            - node
+          script:
+            - npm install
+            - npm run-script build && aws s3 cp ./build s3://unegma-react-playground/ --recursive
+
+            # TODO MIGHT HAVE TO MAKE A SCRIPT TO MAKE EVERYTHING PUBLIC BY DEFAULT
+
+            # Copy all production files to the s3 bucket and ensure Everyone has read access
+            # - aws s3 cp dist/ s3://arn:aws:s3:::unegma.com/ --recursive --grants read=uri=http://acs.amazonaws.com/groups/global/AllUsers
+
+            # create invalidation to clear cache (needs to be "/*" or will send paths of your machine)
+            # - aws configure set preview.cloudfront true
+            # - aws cloudfront create-invalidation --distribution-id= --paths "/*"
