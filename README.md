@@ -1,3 +1,20 @@
+# About
+
+This project is based on the following articles:
+
+I started off following this amazing tutorial (thanks @taniarascia):
+https://www.taniarascia.com/crud-app-in-react-with-hooks/
+
+Before converting to project to Typescript (thanks @Guibz16):
+https://medium.com/swlh/convert-your-javascript-react-app-to-typescript-the-easy-guide-631592dc1876
+
+Before finally Redux-ifying it (thanks again @taniarascia):
+https://www.taniarascia.com/redux-react-guide/
+
+Checkout the commits I made if you are interested in how I followed along with, and combined the 3 tutorials.
+
+---
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
