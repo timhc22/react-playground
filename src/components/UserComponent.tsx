@@ -2,13 +2,19 @@ import React from 'react';
 import {User} from "../interfaces/User";
 
 interface Props {
-    user: User
+    user: User,
+    editRow?: any
+    deleteUser?: any
 }
 
-export const UserComponent = ({ user }: Props): JSX.Element => (
-    <article className="user-excerpt">
-        <p>UserName: {user.username}</p>
-        <p>Name: {user.name}</p>
-        <hr/>
-    </article>
+export const UserComponent = ({ user, editRow, deleteUser }: Props): JSX.Element => (
+    <tr key={user.id}>
+        <td>{user.username}</td>
+        <td>{user.name}</td>
+        <td>
+            <button onClick={() => editRow(user)} className="button muted-button">Edit</button>
+            <button onClick={() => deleteUser(user.id)} className="button muted-button">Delete</button>
+        </td>
+    </tr>
 );
+
