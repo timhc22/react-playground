@@ -20,6 +20,7 @@ https://www.taniarascia.com/redux-react-guide/
 Checkout the commits I made if you are interested in how I followed along with, and combined the 3 tutorials.
 
 ---
+# Original ReadMe
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
