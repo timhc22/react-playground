@@ -4,15 +4,13 @@ import UserTable from "../tables/UserTable";
 import AddUserForm from '../forms/AddUserForm';
 import EditUserForm from '../forms/EditUserForm';
 import { fetchUsers } from '../actions/usersActions';
-import { UserComponent } from "../components/UserComponent";
 import { User } from "../interfaces/User";
 
-// const initialFormState: User = { id: null, name: '', username: '' };
 
 const UsersPage = (): JSX.Element => {
-    const loading = useSelector((state: any) => state.users.loading);
+    const initialFormState: User = { id: null, name: '', username: '' };
+
     const users = useSelector((state: any) => state.users.users);
-    const hasErrors = useSelector((state: any) => state.users.hasErrors);
     const dispatch = useDispatch();
 
     // todo check hooks integration with this (especially on users)
@@ -20,9 +18,9 @@ const UsersPage = (): JSX.Element => {
         dispatch(fetchUsers())
     }, [dispatch]);
 
-    // const [users, setUsers] = useState<User[]>(usersData);
-    // const [editing, setEditing] = useState<boolean>(false);
-    // const [currentUser, setCurrentUser] = useState<User>(initialFormState);
+    // const [users, setUsers] = useState<User[]>(usersData); // todo is this right?
+    const [editing, setEditing] = useState<boolean>(false);
+    const [currentUser, setCurrentUser] = useState<User>(initialFormState); // todo should this be used with users and useSelector as above?
 
     const addUser = (user: User): void => {
         user.id = users.length + 1;
@@ -30,17 +28,17 @@ const UsersPage = (): JSX.Element => {
     };
 
     const deleteUser = (id: number): void => {
-        // setEditing(false);
+        setEditing(false);
         // setUsers(users.filter(user => user.id !== id));
     };
 
     const editRow = (user: User): void => {
-        // setEditing(true);
-        // setCurrentUser({ id: user.id, name: user.name, username: user.username });
+        setEditing(true);
+        setCurrentUser({ id: user.id, name: user.name, username: user.username });
     };
 
     const updateUser = (id: number, updatedUser: User): void => {
-        // setEditing(false);
+        setEditing(false);
         // setUsers(users.map(user => (user.id === id ? updatedUser : user)));
     };
 
@@ -50,28 +48,26 @@ const UsersPage = (): JSX.Element => {
             <div className="flex-row">
 
                 <div className="flex-large">
-                    {/*{editing ? (*/}
-                    {/*    <div>*/}
-                    {/*        <h2>Edit user</h2>*/}
-                    {/*        <EditUserForm*/}
-                    {/*            editing={editing}*/}
-                    {/*            setEditing={setEditing}*/}
-                    {/*            currentUser={currentUser}*/}
-                                {/*updateUser={updateUser} />*/}
-                        {/*</div>*/}
-                    {/*) : (*/}
+                    { editing ? (
                         <div>
-                            {/*<h2>Add user</h2>*/}
-                            {/*<AddUserForm addUser={addUser} />*/}
-                            {/*{ renderUsers() }*/}
-
+                            <h2>Edit user</h2>
+                            <EditUserForm
+                                editing={ editing }
+                                setEditing={ setEditing }
+                                currentUser={ currentUser }
+                                updateUser={ updateUser } />
                         </div>
-                    {/*)}*/}
+                    ) : (
+                        <div>
+                            <h2>Add user</h2>
+                            <AddUserForm addUser={ addUser} />
+                        </div>
+                    )}
                 </div>
 
                 <div className="flex-large">
                     <h2>View users</h2>
-                    <UserTable users={users} deleteUser={deleteUser} editRow={editRow}/>
+                    <UserTable users={users} deleteUser={ deleteUser } editRow={ editRow }/>
                 </div>
             </div>
         </div>
