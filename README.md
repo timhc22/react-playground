@@ -1,6 +1,7 @@
 # About
 
 ## TODO
+* This is still in progress
 * Check app code is ok to share
 * Set up online version (research best options)
 
