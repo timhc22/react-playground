@@ -8,9 +8,9 @@ export const getUsers = () => ({
   type: GET_USERS,
 });
 
-export const getUsersSuccess = posts => ({
+export const getUsersSuccess = users => ({
   type: GET_USERS_SUCCESS,
-  payload: posts,
+  payload: users,
 });
 
 export const getUsersFailure = () => ({
