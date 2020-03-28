@@ -1,7 +1,11 @@
 import React from 'react';
+import {User} from "../interfaces/User";
 
-// TODO FIX THIS TO BE USER
-export const UserComponent = ({ user }: any): JSX.Element => (
+interface Props {
+    user: User
+}
+
+export const UserComponent = ({ user }: Props): JSX.Element => (
     <article className="user-excerpt">
         <p>UserName: {user.username}</p>
         <p>Name: {user.name}</p>
