@@ -1,3 +1,6 @@
+import { User } from "../interfaces/User";
+import { Dispatch } from "redux";
+
 // redux action types
 export const GET_USERS = 'GET_USERS'; // begin telling Redux we will fetch from api
 export const GET_USERS_SUCCESS = 'GET_USERS_SUCCESS'; // pass poss to Redux on successful api call
@@ -8,7 +11,7 @@ export const getUsers = () => ({
   type: GET_USERS,
 });
 
-export const getUsersSuccess = users => ({
+export const getUsersSuccess = (users: User[]) => ({
   type: GET_USERS_SUCCESS,
   payload: users,
 });
@@ -19,8 +22,8 @@ export const getUsersFailure = () => ({
 
 // combine into async thunk
 export const fetchUsers = () => {
-  return async dispatch => {
-    dispatch(getUsers())
+  return async (dispatch: Dispatch) => {
+    dispatch(getUsers());
 
     try {
       const response = await fetch('https://qzt55zlbuf.execute-api.eu-west-2.amazonaws.com/dev/candidates');
@@ -31,4 +34,4 @@ export const fetchUsers = () => {
       dispatch(getUsersFailure());
     }
   }
-}
+};
