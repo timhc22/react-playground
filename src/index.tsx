@@ -4,12 +4,15 @@ import { Provider } from 'react-redux';
 import App from './App';
 import './index.css';
 import * as serviceWorker from './serviceWorker';
-import Store from './stores/Store';
+import { configureStore } from "@reduxjs/toolkit";
+import rootReducer from "./slices/RootReducer";
+
+const store = configureStore({ reducer: rootReducer });
 
 ReactDOM.render(
     // todo maybe better to have this inside Provider
     <React.StrictMode>
-        <Provider store={Store}>
+        <Provider store={store}>
             <App />
         </Provider>
     </React.StrictMode>,
