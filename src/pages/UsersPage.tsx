@@ -15,7 +15,7 @@ const UsersPage = (): JSX.Element => {
 
     // todo check hooks integration with this (especially on users)
     useEffect(() => {
-        dispatch(fetchUsers())
+        dispatch(fetchUsers()) // dispatch automatically available on a connected component
     }, [dispatch]);
 
     // const [users, setUsers] = useState<User[]>(usersData); // todo is this right?
@@ -52,22 +52,22 @@ const UsersPage = (): JSX.Element => {
                         <div>
                             <h2>Edit user</h2>
                             <EditUserForm
-                                editing={ editing }
-                                setEditing={ setEditing }
-                                currentUser={ currentUser }
-                                updateUser={ updateUser } />
+                                editing={editing}
+                                setEditing={setEditing}
+                                currentUser={currentUser}
+                                updateUser={updateUser} />
                         </div>
                     ) : (
                         <div>
                             <h2>Add user</h2>
-                            <AddUserForm addUser={ addUser} />
+                            <AddUserForm addUser={addUser} />
                         </div>
                     )}
                 </div>
 
                 <div className="flex-large">
                     <h2>View users</h2>
-                    <UserTable users={users} deleteUser={ deleteUser } editRow={ editRow }/>
+                    <UserTable users={users} deleteUser={deleteUser} editRow={editRow}/>
                 </div>
             </div>
         </div>
