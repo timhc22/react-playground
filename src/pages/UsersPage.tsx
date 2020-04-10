@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from "react-redux"; // enables redux state to be in props of component
 import { fetchUsers, usersSelector } from '../slices/Users';
-import UserTable from "../components/UserTable";
 import AddUserForm from '../components/AddUserForm';
 import EditUserForm from '../components/EditUserForm';
 import { User } from "../interfaces/User";
+import {UserComponent} from "../components/UserComponent";
 
 const UsersPage = (): JSX.Element => {
     const dispatch = useDispatch();
@@ -65,7 +65,26 @@ const UsersPage = (): JSX.Element => {
 
                 <div className="flex-large">
                     <h2>View users</h2>
-                    <UserTable users={users} deleteUser={deleteUser} editRow={editRow}/>
+                    <table>
+                        <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Username</th>
+                            <th>Actions</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        { users.length > 0 ? (
+                            users.map((user: User) => (
+                                <UserComponent key={user.id} user={user} editRow={editRow} deleteUser={deleteUser} />
+                            ))
+                        ) : (
+                            <tr>
+                                <td colSpan={3}>No users</td>
+                            </tr>
+                        )}
+                        </tbody>
+                    </table>
                 </div>
             </div>
             ) : (
