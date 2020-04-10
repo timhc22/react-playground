@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 const DashboardPage = (): JSX.Element => (
-    <section>
+    <section className="container">
         <h1>Dashboard</h1>
         <p>This is the dashboard.</p>
 

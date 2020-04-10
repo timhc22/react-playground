@@ -828,3 +828,29 @@ caption {
 /**
  * Layout
  */
+
+nav {
+  display: flex;
+  padding: 2rem 0;
+  background: #ffffff;
+}
+
+nav section {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+}
+
+nav a {
+  font-weight: 700;
+  padding: 1rem 1.5rem;
+  border-radius: 4px;
+}
+
+nav a:first-of-type {
+  margin-left: -1.5rem;
+}
+
+nav a:hover {
+  background: #222;
+}
