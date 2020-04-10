@@ -6,21 +6,18 @@ import AddUserForm from '../forms/AddUserForm';
 import EditUserForm from '../forms/EditUserForm';
 import { User } from "../interfaces/User";
 
-
 const UsersPage = (): JSX.Element => {
-    const initialFormState: User = { id: null, name: '', username: '' };
-
-    const users = useSelector((state: any) => state.users.users);
     const dispatch = useDispatch();
+    const initialFormState: User = { id: null, name: '', username: '' };
+    const { users, loading, hasErrors } = useSelector(usersSelector);
+    // todo figure out how to modify users from the form and put back into api call
+    // const [users, setUsers] = useState<User[]>(usersData); // todo is this right?
+    const [editing, setEditing] = useState<boolean>(false);
+    const [currentUser, setCurrentUser] = useState<User>(initialFormState);
 
-    // todo check hooks integration with this (especially on users)
     useEffect(() => {
         dispatch(fetchUsers()) // dispatch automatically available on a connected component
     }, [dispatch]);
-
-    // const [users, setUsers] = useState<User[]>(usersData); // todo is this right?
-    const [editing, setEditing] = useState<boolean>(false);
-    const [currentUser, setCurrentUser] = useState<User>(initialFormState); // todo should this be used with users and useSelector as above?
 
     const addUser = (user: User): void => {
         user.id = users.length + 1;
@@ -45,6 +42,7 @@ const UsersPage = (): JSX.Element => {
     return (
         <div className="container">
             <h1>CRUD App with Hooks</h1>
+            { ! loading && ! hasErrors ? (
             <div className="flex-row">
 
                 <div className="flex-large">
@@ -70,6 +68,9 @@ const UsersPage = (): JSX.Element => {
                     <UserTable users={users} deleteUser={deleteUser} editRow={editRow}/>
                 </div>
             </div>
+            ) : (
+                <p>Loading users...</p>
+            ) }
         </div>
     )
 };
