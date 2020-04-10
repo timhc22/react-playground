@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from "react-redux"; // enables redux state to be in props of component
 import { fetchUsers, usersSelector } from '../slices/Users';
-import UserTable from "../tables/UserTable";
-import AddUserForm from '../forms/AddUserForm';
-import EditUserForm from '../forms/EditUserForm';
+import UserTable from "../components/UserTable";
+import AddUserForm from '../components/AddUserForm';
+import EditUserForm from '../components/EditUserForm';
 import { User } from "../interfaces/User";
 
 const UsersPage = (): JSX.Element => {

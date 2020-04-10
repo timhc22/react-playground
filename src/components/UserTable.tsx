@@ -1,6 +1,6 @@
 import React from 'react';
 import { User } from '../interfaces/User';
-import { UserComponent } from "../components/UserComponent";
+import { UserComponent } from "./UserComponent";
 
 interface Props {
     users: User[]
